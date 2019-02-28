@@ -154,7 +154,7 @@ public final class AddEditOverrideTableViewController: UITableViewController {
 
         tableView.register(LabeledTextFieldTableViewCell.nib(), forCellReuseIdentifier: LabeledTextFieldTableViewCell.className)
         tableView.register(DoubleRangeTableViewCell.nib(), forCellReuseIdentifier: DoubleRangeTableViewCell.className)
-        tableView.register(DecimalTextFieldTableViewCell.nib(), forCellReuseIdentifier: DecimalTextFieldTableViewCell.className)
+        tableView.register(CarbDecimalTextFieldTableViewCell.nib(), forCellReuseIdentifier: CarbDecimalTextFieldTableViewCell.className)
         tableView.register(DateAndDurationTableViewCell.nib(), forCellReuseIdentifier: DateAndDurationTableViewCell.className)
         tableView.register(SwitchTableViewCell.nib(), forCellReuseIdentifier: SwitchTableViewCell.className)
         tableView.register(TextButtonTableViewCell.self, forCellReuseIdentifier: TextButtonTableViewCell.className)
@@ -267,7 +267,7 @@ public final class AddEditOverrideTableViewController: UITableViewController {
                 cell.delegate = self
                 return cell
             case .insulinNeeds:
-                let cell = tableView.dequeueReusableCell(withIdentifier: DecimalTextFieldTableViewCell.className, for: indexPath) as! DecimalTextFieldTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: CarbDecimalTextFieldTableViewCell.className, for: indexPath) as! CarbDecimalTextFieldTableViewCell
                 cell.titleLabel.text = NSLocalizedString("Overall Insulin Needs", comment: "The text for the override insulin needs setting")
                 cell.textField.textColor = .black
                 cell.textField.placeholder = "100"
@@ -561,7 +561,7 @@ extension AddEditOverrideTableViewController: TextFieldTableViewCellDelegate {
         case .name:
             name = cell.textField.text
         case .insulinNeeds:
-            guard let cell = cell as? DecimalTextFieldTableViewCell else {
+            guard let cell = cell as? CarbDecimalTextFieldTableViewCell else {
                 assertionFailure()
                 return
             }
